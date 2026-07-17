@@ -1,0 +1,22 @@
+Build Q*BERT (the 1982 Gottlieb arcade classic) as ONE self-contained HTML file, in 8-bit pixel art. No external files, no CDNs, no images, no audio: everything drawn in code on a canvas.
+
+HARD RULES
+- Canvas 2D at a LOW internal resolution of exactly 208x208, upscaled to fill the viewport with CSS width:min(100vw,100vh);height:min(100vw,100vh) and image-rendering:pixelated. Real pixel art, no smooth look.
+- It must PLAY ITSELF forever. No keyboard, no mouse. A bot drives Q*bert from the moment the page opens, and it loops: when Q*bert colours the whole pyramid or dies, rebuild and go again.
+- DAYLIGHT palette. Background is warm light sky-blue (#bfe3ff), bright and readable. Never a black background (the original is on black - ours is NOT).
+
+THE GAME
+- An ISOMETRIC pyramid of cubes, 7 rows (1+2+3+4+5+6+7 = 28 cubes). Draw the cubes BIG so the pyramid fills most of the canvas and each cube is clearly visible - big chunky isometric boxes, each with a lit top face and two darker side faces.
+- Q*bert is a round orange character with a big tube snout. He HOPS diagonally between cubes: down-left, down-right, up-left, up-right - never straight. Each hop is a small arc.
+- Landing on a cube's top flips its colour to the TARGET colour. Colour every cube to clear the stage.
+- Enemies: a purple snake (Coily) that chases Q*bert, and red balls that bounce down the pyramid. Touching one kills Q*bert.
+- Hopping off the edge of the pyramid makes Q*bert fall off and die.
+
+AI (this is the part that must actually work)
+- Q*bert hops toward the nearest un-coloured cube, ALWAYS staying on the pyramid (never hop off the edge into the void), and dodges Coily and the balls. A bot that hops off the edge or into an enemy every few seconds is a failure.
+- It reasons over the isometric grid: it knows which of the 4 diagonal moves stay on the pyramid and which fall off, and only takes safe ones.
+
+JUICE
+- A little squash on landing, the cube colour flips with a flash, screen shake on death, a small CUBES-left counter in the corner.
+
+Output ONLY the complete HTML in one code block, nothing else.
